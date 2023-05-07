@@ -13,12 +13,12 @@
 <link rel="stylesheet" href="/resource/common.css" />
 <script src="/resource/common.js" defer="defer"></script>
 <!-- 파비콘 -->
-<!-- <link rel="shortcut icon" href="/resource/favicon.ico" /> -->
+<link rel="shortcut icon" href="/resource/favicon.ico" />
 </head>
 
 <body>
 	<nav id="nav" class="grid grid-cols-12 m-4 gap-x-3">
-		<div class="col-start-2">로고</div>
+		<div class="col-start-2"><img src="/resource/logo.png" alt="로고" /></div>
 		<div class="col-start-7">메뉴아이템1</div>
 		<div class="col-start-8">메뉴아이템2</div>
 		<div class="col-start-9">메뉴아이템3</div>
