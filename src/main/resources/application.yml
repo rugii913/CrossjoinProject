@@ -5,3 +5,7 @@ spring:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
+  thymeleaf:
+    prefix: classpath:/
+    suffix: .html
+    view-names: templates/*  # Thymeleaf에 연결될 viewname 범위 설정
