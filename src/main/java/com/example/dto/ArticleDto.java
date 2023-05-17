@@ -1,21 +1,18 @@
-package com.example.vo;
+package com.example.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@ToString
-@EqualsAndHashCode
+@Data
 @AllArgsConstructor
-public class Article {
+public class ArticleDto {
 	
 	private int id;
 	private String regDate;
 	private String updateDate;
 	private int memberId;
 	private int boardId;
-	private String 	 title;
+	private String title;
 	private String body;	
+
 }
