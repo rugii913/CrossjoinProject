@@ -1,8 +1,10 @@
 package com.example.repository;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
+import com.example.dto.BoardGroup;
 import com.example.projectInnerUtil.TimeUtil;
 import com.example.vo.Article;
 
@@ -18,7 +20,8 @@ public class ArticleRepositoryMemoryImpl implements ArticleRepository {
 		makeTestData();
 	}
 
-
+	// 메서드 ----------------------------------------------------------
+	// -----------------------------------------------------------------
 	@Override
 	public int write(Article article) {
 		
@@ -42,16 +45,32 @@ public class ArticleRepositoryMemoryImpl implements ArticleRepository {
 	
 	@Override
 	public List<Article> getFreeboardsArticleList(Integer page) {
-
+		
+		articleList.sort(new Comparator<Article>() {
+			@Override
+			public int compare(Article article1, Article article2) {
+				if (article1.getId() > article2.getId()) {
+					return -1;	
+				}
+				return 1;
+			}
+		});
 		return articleList;
+	}
+	
+	@Override
+	public void modifyArticle(Integer id, Article article) {
+		
+		articleList.set(id, article);
 	}
 	
 	private void makeTestData() {
 		
-		articleList.add(new Article(++lastArticleId, TimeUtil.getNowString(), TimeUtil.getNowString(), 1, 1, "테스트 데이터 제목 1", "테스트 데이터 내용 1"));
-		articleList.add(new Article(++lastArticleId, TimeUtil.getNowString(), TimeUtil.getNowString(), 1, 1, "테스트 데이터 제목 2", "테스트 데이터 내용 2"));
-		articleList.add(new Article(++lastArticleId, TimeUtil.getNowString(), TimeUtil.getNowString(), 1, 1, "테스트 데이터 제목 3", "테스트 데이터 내용 3"));
-		articleList.add(new Article(++lastArticleId, TimeUtil.getNowString(), TimeUtil.getNowString(), 1, 1, "테스트 데이터 제목 4", "테스트 데이터 내용 4"));
-		articleList.add(new Article(++lastArticleId, TimeUtil.getNowString(), TimeUtil.getNowString(), 1, 1, "테스트 데이터 제목 5", "테스트 데이터 내용 5"));
+		articleList.add(new Article(++lastArticleId, TimeUtil.getNowString(), TimeUtil.getNowString(), BoardGroup.GENERAL, 1, 1, "테스트 데이터 제목 1", "테스트 데이터 내용 1"));
+		articleList.add(new Article(++lastArticleId, TimeUtil.getNowString(), TimeUtil.getNowString(), BoardGroup.GENERAL, 1, 1, "테스트 데이터 제목 2", "테스트 데이터 내용 2"));
+		articleList.add(new Article(++lastArticleId, TimeUtil.getNowString(), TimeUtil.getNowString(), BoardGroup.GENERAL, 1, 1, "테스트 데이터 제목 3", "테스트 데이터 내용 3"));
+		articleList.add(new Article(++lastArticleId, TimeUtil.getNowString(), TimeUtil.getNowString(), BoardGroup.GENERAL, 1, 1, "테스트 데이터 제목 4", "테스트 데이터 내용 4"));
+		articleList.add(new Article(++lastArticleId, TimeUtil.getNowString(), TimeUtil.getNowString(), BoardGroup.GENERAL, 1, 1, "테스트 데이터 제목 5", "테스트 데이터 내용 5"));
 	}
+
 }

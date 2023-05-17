@@ -14,39 +14,55 @@ import com.example.vo.Article;
 public class ArticleService {
 	
 	ArticleRepository articleRepository;
+	VoDtoConvertUtil convertUtil;
 	
 	public ArticleService(ArticleRepository articleRepository) {
 		
 		this.articleRepository = articleRepository;
+		this.convertUtil = new VoDtoConvertUtil();
 	}
 	
-	// ----------------------------------------------------------
+	// 메서드 ----------------------------------------------------------
+	// -----------------------------------------------------------------
 	public int writeArticle(ArticleDto articleData) {
 
-		return articleRepository.write(VoDtoConvertUtil.convertDtoToVo(articleData));
+		return articleRepository.write(convertUtil.convertDtoToVo(articleData));
 	}
  
 	public ArticleDto showArticle(int id) {
 		
 		Article article = articleRepository.getArticle(id);
-		return VoDtoConvertUtil.convertVoToDto(article);
+		return convertUtil.convertVoToDto(article);
 	}
 
+	// 조정 필요 부분 시작
 	public List<ArticleDto> showFreeboardsArticleList(Integer page) {
 		
 		List<ArticleDto> articleDataList = new ArrayList<>();
 		List<Article> articleList = articleRepository.getFreeboardsArticleList(page);
 		
 		for (Article article : articleList) {
-			articleDataList.add(VoDtoConvertUtil.convertVoToDto(article)); 
+			articleDataList.add(convertUtil.convertVoToDto(article)); 
 		}
 		
 		return articleDataList;
 	}
 
 	public List<ArticleDto> showArticleList(Integer boardId, Integer page) {
-		
+		// TODO 
 		return null;
 	}
+	// 조정 필요 부분 끝	
+
+	public void modifyArticle(Integer id, ArticleDto articleData) {
+		// TODO Auto-generated method stub
+		Article article = convertUtil.convertDtoToVo(articleData);
+		articleRepository.modifyArticle(id, article);
+		return;
+	}
 	
+	public void deleteArticle(int id) {
+		// TODO Auto-generated method stub
+	}
+
 }

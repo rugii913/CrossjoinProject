@@ -7,14 +7,10 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class Article {
+public class Board {
 	
 	private int id;
 	private String regDate;
-	private String updateDate;
 	private BoardGroup boardGroup;
-	private int boardId;
-	private int memberId;
 	private String title;
-	private String body;	
 }
