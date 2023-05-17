@@ -6,18 +6,18 @@ import com.example.vo.Article;
 
 public class VoDtoConvertUtil {
 	
-	public static Article convertDtoToVo(ArticleDto articleData) {
+	public Article convertDtoToVo(ArticleDto articleData) {
 		
 		Article article = new Article(++ArticleRepositoryMemoryImpl.lastArticleId, TimeUtil.getNowString(), TimeUtil.getNowString(), 
-				articleData.getMemberId(), articleData.getBoardId(), articleData.getTitle(), articleData.getBody());
+				articleData.getBoardGroup(), articleData.getBoardId(), articleData.getMemberId(), articleData.getTitle(), articleData.getBody());
 		
 		return article;
 	}
 	
-	public static ArticleDto convertVoToDto(Article article) {
-		
+	public ArticleDto convertVoToDto(Article article) {
+		//TODO ArticleDTO memberNickname 가져와서 조립
 		ArticleDto articleData = new ArticleDto(article.getId(), article.getRegDate(), article.getUpdateDate(),
-				article.getMemberId(), article.getBoardId(), article.getTitle(), article.getBody());
+				article.getBoardGroup(), article.getBoardId(), article.getMemberId(), article.getTitle(), article.getBody(), "");
 		
 		return articleData;
 	}

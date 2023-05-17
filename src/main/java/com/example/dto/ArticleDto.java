@@ -10,9 +10,12 @@ public class ArticleDto {
 	private int id;
 	private String regDate;
 	private String updateDate;
-	private int memberId;
+	private BoardGroup boardGroup;
 	private int boardId;
+	private int memberId;
 	private String title;
 	private String body;	
+	//
+	private String memberNickname;
 
 }

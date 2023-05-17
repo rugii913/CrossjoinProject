@@ -14,4 +14,6 @@ public interface ArticleRepository {
 	Article getArticle(int id);
 
 	List<Article> getFreeboardsArticleList(Integer page);
+
+	void modifyArticle(Integer id, Article article);
 }
