@@ -1,8 +1,9 @@
 # 개인 프로젝트 과제
 
 ### 할 것
-- member, board vo 잠정적 확정(5/18까지)
-- nav 중 회원 관련 부분 위치 잡기(5/19까지)
+- ~~member, board vo 잠정적 확정(5/18까지)~~ / 5/18 잠정 확정 -> board, gathering 관련 고민 중
+  - board, gathering 관련 vo, controller는 계속 고민해야 할 듯
+- ~~nav 중 회원 관련 부분 위치 잡기(5/19까지)~~ / 5/18 완료
 - 공간대여(schedule) 달력 마크업(5/21까지)
 - 대강이라도 DB 모델링
   - 참고: https://blog.naver.com/dodnam/221750031014
