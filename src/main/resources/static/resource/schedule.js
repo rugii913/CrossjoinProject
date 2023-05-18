@@ -1,35 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../common/head.jspf"%>
-<%@ include file="../common/nav.jspf"%>
-
-
-<div class="h-24"> 
-<!-- 빈 공간 -->
-</div>
-
-<section id="schedule" class="mx-auto w-10/12 bg-white">
-
-	<div class="col-span-7 flex justify-center gap-10">
-		<div><a href="javascript:;" class="go-prev">&lt;</a></div>
-		<div class="year-month"></div>
-		<div><a href="javascript:;" class="go-next">&gt;</a></div>
-	</div>
-	
-	<div class="days grid grid-cols-7">
-		<div class="day text-center">월</div>
-		<div class="day text-center">화</div>
-		<div class="day text-center">수</div>
-		<div class="day text-center">목</div>
-		<div class="day text-center">금</div>
-		<div class="day text-center">토</div>
-		<div class="day text-center">일</div>
-	</div>
-	<div class="dates grid grid-cols-7"></div>
-	
-</section>
-
-
-<script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function(){
 	scheduleInit();
 })
@@ -114,7 +82,3 @@ function scheduleInit() {
 	 });
 	
 }
-</script>
-
-
-<%@ include file="../common/footer.jspf"%>
