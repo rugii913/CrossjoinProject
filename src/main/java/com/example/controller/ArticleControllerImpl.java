@@ -13,11 +13,11 @@ import com.example.dto.ArticleDto;
 import com.example.service.ArticleService;
 
 @RequestMapping("/article/general")
-public class ArticleControllerImpl_BoardGroupGeneral implements ArticleController{
+public class ArticleControllerImpl implements ArticleController{
 	
 	ArticleService articleService;
 	
-	public ArticleControllerImpl_BoardGroupGeneral(ArticleService articleService) {
+	public ArticleControllerImpl(ArticleService articleService) {
 		
 		this.articleService = articleService;
 	}
@@ -25,7 +25,7 @@ public class ArticleControllerImpl_BoardGroupGeneral implements ArticleControlle
 	@GetMapping("/write")
 	@Override
 	public String viewWriteArticleWindow() {
-		// TODO Auto-generated method stub
+		
 		return "/usr/article/general/write";
 	}
 	

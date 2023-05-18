@@ -1,16 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<nav id="nav" class="grid grid-cols-12 m-3 gap-x-3 text-center">
-	<div class="col-start-2 col-span-3">
-		<img src="/resource/logo.png" alt="로고" class="h-14">
+<nav id="nav" class="grid grid-cols-12 m-2 gap-x-2 justify-items-center items-center">
+	<div class="col-start-2 col-span-2 justify-self-start translate-x-1/4 h-20">
+		<a href="/home/main"><img src="/resource/logo.png" alt="로고" class="object-contain h-full"></a>
 	</div>
-	<div class="col-start-7">
-		<a id="boardGroup-general" href="/article/general">함께 쓰기</a>
+	<div class="col-start-5 max-h-fit max-w-fit text-center">
+		<a href="/article/general" class="break-keep">함께 쓰기</a>
 	</div>
-	<div class="col-start-8">모임</div>
-	<div class="col-start-9">강연</div>
-	<div class="col-start-10">공간대여</div>
-	<div class="col-start-11">회원</div>
+	<div class="col-start-6 max-h-fit max-w-fit text-center">
+		<a href="/article/gathering" class="break-keep">모임</a>
+	</div>
+	<div class="col-start-7 max-h-fit max-w-fit">
+		<a href="/lecture" class="break-keep">강연</a>
+	</div>
+	<div class="col-start-8 max-h-fit max-w-fit text-center">
+		<a href="/schedule" class="break-keep">공간 대여 / 일정</a>
+	</div>
+	<div class="col-start-11 h-[40px] w-[40px]">
+		<a href="/member" class="break-keep"><img src="/resource/person.png" alt="로고" class="object-contain h-full"></a>
+	</div>
 </nav>
 
+
+<!-- 구분선  -->
 <div class="h-px bg-[#c1c56f]"></div>

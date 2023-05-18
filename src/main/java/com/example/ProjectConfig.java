@@ -4,7 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.example.controller.ArticleController;
-import com.example.controller.ArticleControllerImpl_BoardGroupGeneral;
+import com.example.controller.ArticleControllerImpl;
+import com.example.controller.GatheringController;
+import com.example.controller.GatheringControllerImpl;
 import com.example.repository.ArticleRepository;
 import com.example.repository.ArticleRepositoryMemoryImpl;
 import com.example.service.ArticleService;
@@ -13,9 +15,15 @@ import com.example.service.ArticleService;
 public class ProjectConfig {
 	
 	@Bean
-	public ArticleController articlecontroller(ArticleService articleService) {
+	public ArticleController articleController(ArticleService articleService) {
 		
-		return new ArticleControllerImpl_BoardGroupGeneral(articleService); 
+		return new ArticleControllerImpl(articleService); 
+	}
+	
+	@Bean
+	public GatheringController gatheringController(ArticleService articleService) {
+		
+		return new GatheringControllerImpl(articleService); 
 	}
 	
 	@Bean
