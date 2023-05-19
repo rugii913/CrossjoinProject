@@ -30,6 +30,9 @@
 		<div class="pt-px w-4/5 h-10 absolute top-full left-[10%] hidden group-hover:block">
 			<div class="bg-white flex justify-center content-center">
 				<div class="flex items-center">
+					<span>전체</span>
+				</div>
+				<div class="flex items-center">
 					<span>모집 중</span>
 				</div>
 				<div class="flex items-center">

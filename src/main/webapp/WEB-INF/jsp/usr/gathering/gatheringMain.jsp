@@ -4,14 +4,42 @@
 
 
 
-<section id="main-page-contents" class="grid grid-cols-12 py-10">
-	<article class="col-start-2 col-span-4">
-		강연 포스터
-		<div class="w-40 h-40 bg-[#c6cd7d] mx-auto"></div>
+<div class="h-10"><!-- 임시 빈 공간 --></div>
+
+
+<section id="gathering-main" class="w-1/2 mx-auto grid grid-cols-2 gap-6">
+	<article class="mx-auto">
+		<div class="w-full">
+			<img src="/resource/gatheringImg/gathering1.png" alt=""  class="object-contain" />
+		</div>
+		<div>
+			<div>마감임박</div>
+			<div>모임 이름</div>
+			<div>모임 설명</div>
+			<div>모임 일정</div>
+		</div>
 	</article>
-	<article class="col-start-7 col-span-4">
-		동네서점 바로대출
-		<div class="w-40 h-40 bg-[#c6cd7d] mx-auto"></div>
+	<article>
+		<div class="w-full">
+			<img src="/resource/gatheringImg/gathering2.png" alt=""  class="object-contain" />
+		</div>
+		<div>
+			<div>마감임박</div>
+			<div>모임 이름</div>
+			<div>모임 설명</div>
+			<div>모임 일정</div>
+		</div>
+	</article>
+	<article>
+		<div class="w-full">
+			<img src="/resource/gatheringImg/gathering3.png" alt=""  class="object-contain" />
+		</div>
+		<div>
+			<div>마감임박</div>
+			<div>모임 이름</div>
+			<div>모임 설명</div>
+			<div>모임 일정</div>
+		</div>
 	</article>
 </section>
 
