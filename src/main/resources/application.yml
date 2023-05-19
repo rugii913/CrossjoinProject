@@ -5,7 +5,14 @@ spring:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/crossjoin?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull
+    username: root
+    password: 
   thymeleaf:
     prefix: classpath:/
     suffix: .html
     view-names: templates/*  # Thymeleaf에 연결될 viewname 범위 설정
+mybatis:
+  type-aliases-package: com.example.vo
