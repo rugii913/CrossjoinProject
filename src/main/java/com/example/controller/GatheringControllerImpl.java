@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.dto.ArticleDto;
 import com.example.service.ArticleService;
 
-@RequestMapping("/article/gathering")
+@RequestMapping("/gathering")
 public class GatheringControllerImpl implements GatheringController {
 	
 	ArticleService articleService;
