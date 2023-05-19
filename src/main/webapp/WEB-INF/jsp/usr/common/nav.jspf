@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <nav id="nav" class="grid grid-cols-12 m-2 gap-x-2 justify-items-center items-center">
-	<div class="col-start-2 col-span-2 justify-self-start translate-x-1/4 h-20">
+	<div class="col-start-2 col-span-2 justify-self-center translate-x-1/4 h-20">
 		<a href="/home/main"><img src="/resource/logo.png" alt="로고" class="object-contain h-full"></a>
 	</div>
 	<div class="col-start-5 max-h-fit max-w-fit text-center">
@@ -11,17 +11,17 @@
 	<div class="col-start-6 max-h-fit max-w-fit text-center">
 		<a href="/article/gathering" class="break-keep">모임</a>
 	</div>
-	<div class="col-start-7 max-h-fit max-w-fit">
-		<a href="/lecture" class="break-keep">강연</a>
+	<div class="col-start-7 max-h-fit max-w-fit text-center">
+		<a href="/schedule" class="break-keep">일정 / 공간 대여</a>
 	</div>
 	<div class="col-start-8 max-h-fit max-w-fit text-center">
-		<a href="/schedule" class="break-keep">공간 대여 / 일정</a>
+		<a href="/schedule" class="break-keep">동네서점 바로대출</a>
 	</div>
 	<div class="col-start-11">
 		<div class="h-[40px] w-[40px] break-keep relative">
 			<img id="member-btn" src="/resource/person.png" alt="회원 기능 버튼" class="object-contain h-full absolute z-20 cursor-pointer hover:drop-shadow-lg">
 			<div id="member-menu" class="hidden">
-				<div class="h-[40px] text-lg">${member.nickname } 님</div>
+				<div class="h-[40px] text-lg"><%-- ${member.nickname } --%> 환영합니다!</div>
 				<div><a href="#">회원가입</a></div>
 				<div><a href="#">로그인</a></div>
 			</div>
