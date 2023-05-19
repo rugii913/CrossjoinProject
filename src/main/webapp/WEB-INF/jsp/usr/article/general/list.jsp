@@ -5,7 +5,7 @@
 	
 
 
-	<section class="mt-8 text-l">
+	<section class="mt-8">
 		<div class="container mx-auto px-3">
 			<div class="w-10/12 mx-auto">
 				<div class="flex justify-between">

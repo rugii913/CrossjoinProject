@@ -1,23 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<nav id="nav" class="grid grid-cols-12 m-2 gap-x-2 justify-items-center items-center">
-	<div class="col-start-2 col-span-2 justify-self-center translate-x-1/4 h-20">
+<nav id="nav" class="grid grid-cols-12 mt-2 gap-x-2 justify-items-center items-center relative">
+	<div class="col-start-2 col-span-2 justify-self-start h-20">
 		<a href="/home/main"><img src="/resource/logo.png" alt="로고" class="object-contain h-full"></a>
 	</div>
-	<div class="col-start-5 max-h-fit max-w-fit text-center">
-		<a href="/article/general" class="break-keep">함께 쓰기</a>
+	<div class="col-start-5 self-stretch group">
+		<a href="/article/general" class="w-full h-full hover:text-[#52763c] flex items-center">
+			<span class="w-full text-center break-keep">함께 쓰기</span>
+		</a>
+		<div class="pt-px w-4/5 h-10 absolute top-full left-[10%] hidden group-hover:block">
+			<div class="bg-white flex justify-center content-center">
+				<div class="flex items-center">
+					<span>전체</span>
+				</div>
+				<div class="flex items-center">
+					<span>독서</span>
+				</div>
+				<div class="flex items-center">
+					<span>영화</span>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="col-start-6 max-h-fit max-w-fit text-center">
-		<a href="/article/gathering" class="break-keep">모임</a>
+	<div class="col-start-6 self-stretch group">
+		<a href="/article/gathering" class="w-full h-full hover:text-[#52763c] flex items-center">
+			<span class="w-full text-center break-keep">모임</span>
+		</a>
+		<div class="pt-px w-4/5 h-10 absolute top-full left-[10%] hidden group-hover:block">
+			<div class="bg-white flex justify-center content-center">
+				<div class="flex items-center">
+					<span>모집 중</span>
+				</div>
+				<div class="flex items-center">
+					<span>진행 중</span>
+				</div>
+				<div class="flex items-center">
+					<span>완료</span>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="col-start-7 max-h-fit max-w-fit text-center">
-		<a href="/schedule" class="break-keep">일정 / 공간 대여</a>
+	<div class="col-start-7 self-stretch">
+		<a href="/schedule" class="w-full h-full hover:text-[#52763c] flex items-center">
+			<span class="w-full text-center break-keep">일정 / 공간 대여</span>
+		</a>
 	</div>
-	<div class="col-start-8 max-h-fit max-w-fit text-center">
-		<a href="/schedule" class="break-keep">동네서점 바로대출</a>
+	<div class="col-start-8 self-stretch">
+		<a href="/schedule" class="w-full h-full hover:text-[#52763c] flex items-center">
+			<span class="w-full text-center break-keep">동네서점 바로대출</span>
+		</a>
 	</div>
-	<div class="col-start-11">
+	<div class="col-start-11 justify-self-end">
 		<div class="h-[40px] w-[40px] break-keep relative">
 			<img id="member-btn" src="/resource/person.png" alt="회원 기능 버튼" class="object-contain h-full absolute z-20 cursor-pointer hover:drop-shadow-lg">
 			<div id="member-menu" class="hidden">
