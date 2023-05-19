@@ -8,15 +8,13 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class Board {
+public class Gathering extends Board{
 	
 	private int id;
 	private String regDate;
+	private String startDate;
+	private String endDate;
 	private BoardStatus boardStatus;
 	private BoardGroup boardGroup;
 	private String title;
-	
-	Board() {
-		
-	}
 }
