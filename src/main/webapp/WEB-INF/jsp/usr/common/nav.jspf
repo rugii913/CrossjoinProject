@@ -62,8 +62,12 @@
 			</button>
 			<div id="member-menu" class="hidden">
 				<div class="h-[40px] text-lg"><%-- ${member.nickname } --%> 환영합니다!</div>
-				<div><a href="#">회원가입</a></div>
-				<div><a href="#">로그인</a></div>
+				<div>
+					<button id="member-join-btn">회원가입</button>
+				</div>
+				<div>
+					<button id="member-login-btn">로그인</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -74,14 +78,19 @@
 <div class="h-px bg-[#c1c56f] -z-10 sticky top-24"></div>
 
 <script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", ()=>{
 	memberBtnInit();
+	memberJoinBtnInit();
+	memberLoginBtnInit();
+	
 })
 
 function memberBtnInit() {
+	
 	const memberBtn = document.querySelector('#member-btn');
 	const memberMenu = document.querySelector('#member-menu');
-	memberBtn.addEventListener('click', function(){
+	
+	memberBtn.addEventListener('click', ()=>{
 		if (memberMenu.getAttribute('class').includes('hidden')) {
 			memberMenu.setAttribute('class', 'w-[200px] bg-white rounded absolute z-10 right-0 top-0 -translate-y-[10px] translate-x-[10px] py-4 px-6');	
 		} else {
@@ -91,7 +100,64 @@ function memberBtnInit() {
 	memberBtn.addEventListener('blur', ()=>{
 		setTimeout(function(){
 			memberMenu.setAttribute('class', 'hidden');
-		}, 50);
+		}, 200);
 	})
+	
+}
+
+function memberJoinBtnInit() {
+	const memberJoinBtn = document.querySelector('#member-join-btn');
+	
+	let bg = document.createElement('div');
+	bg.setAttribute('class', 'w-screen h-screen bg-black fixed z-40 top-0 left-0 opacity-60');
+	
+	let container = document.createElement('div');
+	let memberJoinForm = document.createElement('div');
+	
+	container.setAttribute('class', 'flex justify-center');
+	memberJoinForm.setAttribute('id', 'memberJoinForm');
+	memberJoinForm.setAttribute('class', 'h-[600px] w-[450px] top-[10%] mx-auto bg-white rounded-lg fixed z-50 flex flex-col');
+	
+	memberJoinBtn.addEventListener('click', ()=>{
+		document.body.appendChild(bg);
+		document.body.appendChild(container);
+		container.appendChild(memberJoinForm);
+		importForm('memberJoinForm');
+		/* memberJoinForm.innerHTML = loadForm('/resource/form/loginForm.html'); loadForm 앞에 await가 없으면 [object Promise]라는 메시지만 보임 */
+		/* await는 async function에서 () 내에 바로 있어야 하므로 아예 다른 함수로 빼줘야함 */
+		
+	})
+		
+	bg.addEventListener('click', ()=>{
+		document.body.removeChild(bg);
+	    document.body.removeChild(container);
+	})
+} 
+
+function memberLoginBtnInit() {
+	const memberLoginBtn = document.querySelector('#member-login-btn');
+	
+	let bg = document.createElement('div');
+	bg.setAttribute('class', 'w-screen h-screen bg-black fixed z-40 top-0 left-0 opacity-60');
+	
+	let memberLoginForm = document.createElement('div');
+	
+	bg.addEventListener('click', ()=>{
+		document.body.removeChild(bg);
+	})
+}
+
+async function loadForm(url) {
+	/* const response = await fetch(url, {
+		method: 'GET'
+	});
+	return response.text();
+	await 한 번 더 필요
+	*/
+	return await (await fetch(url)).text();
+}
+
+async function importForm(target) {
+	document.querySelector('#' + target).innerHTML = await loadForm('/resource/form/' + target + '.html');
 }
 </script>
