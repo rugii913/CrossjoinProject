@@ -73,10 +73,12 @@
 	</div>
 </nav>
 
+<%@ include file="../member/join.jspf"%>
 
 <!-- 구분선  -->
 <div class="h-px bg-[#c1c56f] -z-10 sticky top-24"></div>
 
+<!-- 스크립트  -->
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", ()=>{
 	memberBtnInit();
@@ -112,19 +114,23 @@ function memberJoinBtnInit() {
 	bg.setAttribute('class', 'w-screen h-screen bg-black fixed z-40 top-0 left-0 opacity-60');
 	
 	let container = document.createElement('div');
-	let memberJoinForm = document.createElement('div');
+	//let memberJoinForm = document.createElement('div');//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
+	let memberJoinFormDiv = document.querySelector('#member-join-form-div'); //jspf 파일로 포함된 join.jspf의 member-join-form-div을 변수로 지정
 	
 	container.setAttribute('class', 'flex justify-center');
-	memberJoinForm.setAttribute('id', 'memberJoinForm');
-	memberJoinForm.setAttribute('class', 'h-[600px] w-[450px] top-[10%] mx-auto bg-white rounded-lg fixed z-50 flex flex-col');
+	//memberJoinForm.setAttribute('id', 'memberJoinForm');//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
+	//memberJoinFormDiv.setAttribute('class', 'h-[600px] w-[450px] top-[10%] mx-auto bg-white rounded-lg fixed z-50 flex flex-col');
 	
 	memberJoinBtn.addEventListener('click', ()=>{
 		document.body.appendChild(bg);
 		document.body.appendChild(container);
-		container.appendChild(memberJoinForm);
-		importForm('memberJoinForm');
-		/* memberJoinForm.innerHTML = loadForm('/resource/form/loginForm.html'); loadForm 앞에 await가 없으면 [object Promise]라는 메시지만 보임 */
-		/* await는 async function에서 () 내에 바로 있어야 하므로 아예 다른 함수로 빼줘야함 */
+		/*//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
+		//container.appendChild(memberJoinForm);
+		//importForm('memberJoinForm');
+		// memberJoinForm.innerHTML = loadForm('/resource/form/loginForm.html'); loadForm 앞에 await가 없으면 [object Promise]라는 메시지만 보임
+		// await는 async function에서 () 내에 바로 있어야 하므로 아예 다른 함수로 빼줘야함 */
+		container.appendChild(memberJoinFormDiv);
+		memberJoinFormDiv.setAttribute('class', 'h-[600px] w-[450px] top-[10%] mx-auto bg-white rounded-lg fixed z-50 flex flex-col');
 		
 	})
 		
@@ -147,17 +153,18 @@ function memberLoginBtnInit() {
 	})
 }
 
-async function loadForm(url) {
-	/* const response = await fetch(url, {
-		method: 'GET'
-	});
-	return response.text();
-	await 한 번 더 필요
-	*/
+/*//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
+	async function loadForm(url) {
+	//const response = await fetch(url, {
+	//method: 'GET'
+	//});
+	//return response.text();
+	//await 한 번 더 필요
+	
 	return await (await fetch(url)).text();
 }
 
 async function importForm(target) {
 	document.querySelector('#' + target).innerHTML = await loadForm('/resource/form/' + target + '.html');
-}
+} */
 </script>
