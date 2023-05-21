@@ -53,7 +53,7 @@ public class MemberController {
 		HttpSession session = request.getSession(false);
 		
 		if (session == null || session.getAttribute("loginedMember") == null) {
-			return "손님";
+			return "손";
 		}
 		
 		Member loginedMember = (Member)session.getAttribute("loginedMember");
