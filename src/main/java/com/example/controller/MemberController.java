@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.projectInnerUtil.UtilURL;
 import com.example.repository.MemberRepository;
 import com.example.vo.Member;
+import com.example.vo.Result;
 
 @Controller
 @RequestMapping("/member")
@@ -64,21 +65,23 @@ public class MemberController {
 	
 	@PostMapping("/login")
 	@ResponseBody
-	public String login(@RequestParam String email, @RequestParam String loginPw, HttpServletRequest request) {
+	public /*String*/ Result<String> login(@RequestParam String email, @RequestParam String loginPw, HttpServletRequest request) {
 		
 		Member foundMember = memberRepository.getMemberByEmail(email);
 		if (foundMember == null) {
-			return UtilURL.historyBack("일치하는 회원 정보가 존재하지 않습니다.");
+			/* return UtilURL.historyBack("일치하는 회원 정보가 존재하지 않습니다."); */
+			return new Result<String>("", "LoginedMemberNickname");
 		}
 		
 		if (!foundMember.getLoginPw().equals(loginPw) ) {
-			return UtilURL.historyBack("비밀번호가 일치하지 않습니다.");
+			/* return UtilURL.historyBack("비밀번호가 일치하지 않습니다."); */
+			return new Result<String>("", "LoginedMemberNickname");
 		}
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("loginedMember", foundMember);
-		
-		return UtilURL.replace("로그인 성공!", "/main");
+		/* return UtilURL.replace("로그인 성공!", "/main"); */
+		return new Result<String>(foundMember.getNickname(), "LoginedMemberNickname");
 	}
 	
 	@GetMapping("/logout")

@@ -38,7 +38,13 @@
 	        }, */
 	        // multipart/form-data로 들어가야하기 때문에 'application/x-www-form-urlencoded'가 들어가면 안 된다. https://velog.io/@ksmfou98/HTTP-%ED%8F%BC%EA%B3%BC-%ED%8C%8C%EC%9D%BC-%EC%A0%84%EC%86%A1-x-www-form-urlencoded-Multipartform-data
 	        body: payload,
-		}).then(res => res.json()).then(data => console.log(data));
+		}).then(res => res.json())
+ 		.then(data => { if (data['data1'] == '') {
+			alert('로그인 실패');
+		} else {
+			alert(data['data1'] + '님 환영합니다.');
+		}
+		});
 		
 	});
 		
