@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="member-join-form-div" class="hidden">
+	<div class="text-right close-btn">x</div>
 	<div class="text-center text-3xl my-6">crossjoin의 회원이 되어보세요!</div>
 	
 	<form id="member-join-form">
@@ -19,8 +20,7 @@
 			<input class="rounded" name="nickname" placeholder="닉네임" />
 		</div>
 		<div class="flex justify-center mt-6 text-[#3B5998] gap-8">
-			<button class="bg-gray-300 rounded py-1 px-3" type="submit" value="회원가입">회원가입</button>
-			<button class="bg-gray-300 rounded py-1 px-3" type="button" onclick="history.back();">뒤로가기</button>
+			<button class="bg-gray-300 rounded py-1 px-3" type="submit">회원가입</button>
 		</div>
 	</form>
 </div>
@@ -30,7 +30,7 @@
 	let validLoginId = "";
 	let validEmail = "";
 
-	const form = document.getElementById('member-join-form'); //https://sisiblog.tistory.com/261 //https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-FormData-%EC%A0%95%EB%A6%AC-fetch-api
+	const form = document.getElementById('member-join-form'); // https://sisiblog.tistory.com/261 //https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-FormData-%EC%A0%95%EB%A6%AC-fetch-api
 	
 	form.addEventListener('submit', (e)=> {
 		e.preventDefault();

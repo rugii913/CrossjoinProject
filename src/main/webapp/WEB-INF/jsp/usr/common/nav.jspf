@@ -74,6 +74,7 @@
 </nav>
 
 <%@ include file="../member/join.jspf"%>
+<%@ include file="../member/login.jspf"%>
 
 <!-- 구분선  -->
 <div class="h-px bg-[#c1c56f] -z-10 sticky top-24"></div>
@@ -91,6 +92,7 @@ function memberBtnInit() {
 	
 	const memberBtn = document.querySelector('#member-btn');
 	const memberMenu = document.querySelector('#member-menu');
+	let form = null;
 	
 	memberBtn.addEventListener('click', ()=>{
 		if (memberMenu.getAttribute('class').includes('hidden')) {
@@ -108,21 +110,25 @@ function memberBtnInit() {
 }
 
 function memberJoinBtnInit() {
+	
+	let form = document.getElementById('member-join-form');
+	
 	const memberJoinBtn = document.querySelector('#member-join-btn');
 	
-	let bg = document.createElement('div');
-	bg.setAttribute('class', 'w-screen h-screen bg-black fixed z-40 top-0 left-0 opacity-60');
+	let modalBg = document.createElement('div');
+	modalBg.setAttribute('class', 'w-screen h-screen bg-black fixed z-40 top-0 left-0 opacity-60');
 	
 	let container = document.createElement('div');
 	//let memberJoinForm = document.createElement('div');//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
 	let memberJoinFormDiv = document.querySelector('#member-join-form-div'); //jspf 파일로 포함된 join.jspf의 member-join-form-div을 변수로 지정
+	let closeBtn = document.querySelector('.close-btn')
 	
 	container.setAttribute('class', 'flex justify-center');
 	//memberJoinForm.setAttribute('id', 'memberJoinForm');//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
 	//memberJoinFormDiv.setAttribute('class', 'h-[600px] w-[450px] top-[10%] mx-auto bg-white rounded-lg fixed z-50 flex flex-col');
 	
 	memberJoinBtn.addEventListener('click', ()=>{
-		document.body.appendChild(bg);
+		document.body.appendChild(modalBg);
 		document.body.appendChild(container);
 		/*//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
 		//container.appendChild(memberJoinForm);
@@ -134,22 +140,48 @@ function memberJoinBtnInit() {
 		
 	})
 		
-	bg.addEventListener('click', ()=>{
-		document.body.removeChild(bg);
+	modalBg.addEventListener('click', ()=>{
+		document.body.removeChild(modalBg);
+	    document.body.removeChild(container);
+	})
+	
+	closeBtn.addEventListener('click', ()=>{
+		document.body.removeChild(modalBg);
 	    document.body.removeChild(container);
 	})
 } 
 
 function memberLoginBtnInit() {
+	
+	let form = document.getElementById('member-login-form');
+	
 	const memberLoginBtn = document.querySelector('#member-login-btn');
 	
-	let bg = document.createElement('div');
-	bg.setAttribute('class', 'w-screen h-screen bg-black fixed z-40 top-0 left-0 opacity-60');
+	let modalBg = document.createElement('div');
+	modalBg.setAttribute('class', 'w-screen h-screen bg-black fixed z-40 top-0 left-0 opacity-60');
 	
-	let memberLoginForm = document.createElement('div');
+	let container = document.createElement('div');
+	let memberLoginFormDiv = document.querySelector('#member-login-form-div'); //jspf 파일로 포함된 join.jspf의 member-join-form-div을 변수로 지정
+	let closeBtn = document.querySelector('.close-btn')
 	
-	bg.addEventListener('click', ()=>{
-		document.body.removeChild(bg);
+	container.setAttribute('class', 'flex justify-center');
+	
+	memberLoginBtn.addEventListener('click', ()=>{
+		document.body.appendChild(modalBg);
+		document.body.appendChild(container);
+		container.appendChild(memberLoginFormDiv);
+		memberLoginFormDiv.setAttribute('class', 'h-[600px] w-[450px] top-[10%] mx-auto bg-white rounded-lg fixed z-50 flex flex-col');
+		
+	})
+		
+	modalBg.addEventListener('click', ()=>{
+		document.body.removeChild(modalBg);
+	    document.body.removeChild(container);
+	})
+	
+	closeBtn.addEventListener('click', ()=>{
+		document.body.removeChild(modalBg);
+	    document.body.removeChild(container);
 	})
 }
 
