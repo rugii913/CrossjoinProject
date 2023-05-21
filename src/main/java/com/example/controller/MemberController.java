@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,8 @@ import com.example.vo.Result;
 public class MemberController {
 	
 	MemberRepository memberRepository;
+	@Autowired
+	MessageSource ms;
 	
 	public MemberController(MemberRepository memberRepository) {
 
@@ -70,18 +74,18 @@ public class MemberController {
 		Member foundMember = memberRepository.getMemberByEmail(email);
 		if (foundMember == null) {
 			/* return UtilURL.historyBack("일치하는 회원 정보가 존재하지 않습니다."); */
-			return new Result<String>("", "LoginedMemberNickname");
+			return new Result<String>("", "LoginedMemberNickname", ms.getMessage("member.login.fail.emailNotExists", null, null));
 		}
 		
 		if (!foundMember.getLoginPw().equals(loginPw) ) {
 			/* return UtilURL.historyBack("비밀번호가 일치하지 않습니다."); */
-			return new Result<String>("", "LoginedMemberNickname");
+			return new Result<String>("", "LoginedMemberNickname", ms.getMessage("member.login.fail.loginPwMismatch", null, null));
 		}
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("loginedMember", foundMember);
 		/* return UtilURL.replace("로그인 성공!", "/main"); */
-		return new Result<String>(foundMember.getNickname(), "LoginedMemberNickname");
+		return new Result<String>(foundMember.getNickname(), "LoginedMemberNickname", ms.getMessage("member.login.success", null, null));
 	}
 	
 	@GetMapping("/logout")
