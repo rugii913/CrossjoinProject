@@ -5,12 +5,12 @@
 	
 	<form id="member-login-form">
 		<div class="w-[380px] mx-auto flex flex-col items-center gap-4 text-xl">
-			<label class="relative w-full" for="input-email">
-				<input class="h-14 rounded border peer w-full px-3" name="email" id="input-email" placeholder="이메일" />
+			<label class="relative w-full" > <!-- for="input-email" -->
+				<input class="h-14 rounded border peer w-full px-3" name="email" placeholder="이메일" />
 				<span class="hidden absolute left-3 top-3 peer-focus:text-sm peer-focus:top-1 peer-focus:inline">이메일</span>
 			</label>
-			<label class="relative w-full" for="input-email">
-				<input class="h-14 rounded border peer w-full px-3" name="loginPw" id="input-loginPw" placeholder="비밀번호" />
+			<label class="relative w-full" > <!-- for="input-email" -->
+				<input class="h-14 rounded border peer w-full px-3" name="loginPw" id="input-login-loginPw" placeholder="비밀번호" />
 				<span class="hidden absolute left-3 top-3 peer-focus:text-sm peer-focus:top-1 peer-focus:inline">비밀번호</span>
 			</label>
 		</div>
@@ -21,7 +21,8 @@
 </div>
 
 <script>
-	// https://sisiblog.tistory.com/261 //https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-FormData-%EC%A0%95%EB%A6%AC-fetch-api
+	const memberLoginForm = document.getElementById('member-login-form'); // https://sisiblog.tistory.com/261 //https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-FormData-%EC%A0%95%EB%A6%AC-fetch-api
+	
 	memberLoginForm.addEventListener('submit', (e)=> {
 		e.preventDefault();
 		
@@ -68,15 +69,4 @@
 
 		isFormSubmitted = true;
 	}
-
-	const inputEmail = document.querySelector('#input-email');
-	inputEmail.onblur = function() {
-		checkDupEmail(inputEmail.value);
-	};
-	// inputEmail.onblur = checkDupEmail(inputEmail.value); // 이렇게 적으면 처음 시작할 때 딱 한 번만 실행됨
-	
-	const inputLoginPw = document.querySelector('#input-loginPw');
-	inputLoginPw.onkeyup = function() {
-		checkValidationLoginPw(inputLoginPw.value);
-	};
 </script>

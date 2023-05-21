@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ public class MemberController {
 
 		this.memberRepository = memberRepository;
 	}
-
+	
 //	@GetMapping({"", "/main", "/home/main"})
 //	public String showMain(HttpServletRequest request, Model model) {
 //		
@@ -40,6 +41,21 @@ public class MemberController {
 //		
 //		return "/main";
 //	}
+
+	@GetMapping("/getLoginedMemberNickname")
+	@ResponseBody
+	public String getLoginedMemberNickname(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession(false);
+		
+		if (session == null || session.getAttribute("loginedMember") == null) {
+			return "손님";
+		}
+		
+		Member loginedMember = (Member)session.getAttribute("loginedMember");
+		
+		return loginedMember.getNickname();
+	}
 
 	@GetMapping("/login")
 	public String showLoginForm() {

@@ -5,8 +5,8 @@
 	
 	<form id="member-join-form">
 		<div class="w-[380px] mx-auto flex flex-col items-center gap-4 text-xl">
-			<label class="relative w-full" for="input-email">
-				<input class="h-14 rounded border peer w-full px-3" name="email" id="input-email" placeholder="이메일" />
+			<label class="relative w-full" > <!-- for="input-email" -->
+				<input class="h-14 rounded border peer w-full px-3" name="email" id="input-join-email" placeholder="이메일" />
 				<span class="hidden absolute left-3 top-3 peer-focus:text-sm peer-focus:top-1 peer-focus:inline">이메일</span>
 			</label>
 			<div id="emailDupMsg"></div>
@@ -14,7 +14,7 @@
 				<input class="h-14 rounded border peer w-full px-3" name="loginId" id="input-loginId" placeholder="아이디" />
 				<span class="hidden absolute left-3 top-3 peer-focus:text-sm peer-focus:top-1 peer-focus:inline">아이디</span>
 			</label> -->
-			<input class="rounded" name="loginPw" id="input-loginPw" placeholder="비밀번호" />
+			<input class="rounded" name="loginPw" id="input-join-loginPw" placeholder="비밀번호" />
 			<div id="loginPwValidationMsg"></div>
 			<input class="rounded" name="loginPwConfirm" placeholder="비밀번호 확인" />
 			<input class="rounded" name="nickname" placeholder="닉네임" />
@@ -178,14 +178,14 @@
 		}
 	}
 
-	const inputEmail = document.querySelector('#input-email');
-	inputEmail.onblur = function() {
-		checkDupEmail(inputEmail.value);
+	const inputJoinEmail = document.querySelector('#input-join-email');
+	inputJoinEmail.onblur = function() {
+		checkDupEmail(inputJoinEmail.value);
 	};
 	// inputEmail.onblur = checkDupEmail(inputEmail.value); // 이렇게 적으면 처음 시작할 때 딱 한 번만 실행됨
 	
-	const inputLoginPw = document.querySelector('#input-loginPw');
-	inputLoginPw.onkeyup = function() {
-		checkValidationLoginPw(inputLoginPw.value);
+	const inputJoinLoginPw = document.querySelector('#input-join-loginPw');
+	inputJoinLoginPw.onkeyup = function() {
+		checkValidationLoginPw(inputJoinLoginPw.value);
 	};
 </script>
