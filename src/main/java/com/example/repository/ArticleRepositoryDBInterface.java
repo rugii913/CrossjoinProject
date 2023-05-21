@@ -2,28 +2,28 @@ package com.example.repository;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import com.example.vo.Article;
 
-@Mapper
 public interface ArticleRepositoryDBInterface extends ArticleRepository{
 	
 	@Override
-	int write(Article aritcle);
+	public int writeArticle(Article aritcle);
+	
+	@Override
+	public Article getArticle(int id);
 
 	@Override
-	List<Article> getFreeboardsArticleList(Integer page);
+	public List<Article> getFreeboardsArticleList(Integer page);
 
 	@Override
-	void modifyArticle(Integer id, Article article);
+	public void modifyArticle(Integer id, Article article);
 
 	//-----------------------------------------------------------------------------------------------
 	public void writeArticle(int memberId, int boardId, String title, String body);
 	
 	public List<Article> getArticles();
 
-	public Article getArticle(int id);
+	
 	
 	public List<Article> getForPrintAllArticles(int articleFrom, int articlesPerPage, String searchKeywordTypeCode, String searchKeyword);
 	

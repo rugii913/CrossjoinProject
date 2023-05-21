@@ -26,7 +26,7 @@ public class ArticleService {
 	// -----------------------------------------------------------------
 	public int writeArticle(ArticleDto articleData) {
 
-		return articleRepository.write(convertUtil.convertDtoToVo(articleData));
+		return articleRepository.writeArticle(convertUtil.convertDtoToVo(articleData));
 	}
  
 	public ArticleDto showArticle(int id) {

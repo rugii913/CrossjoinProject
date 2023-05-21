@@ -2,14 +2,14 @@ package com.example.repository;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import org.apache.ibatis.annotations.Mapper;
 
 import com.example.vo.Article;
 
-@Component
+@Mapper
 public interface ArticleRepository {
 
-	int write(Article aritcle);
+	int writeArticle(Article aritcle);
 	
 	Article getArticle(int id);
 

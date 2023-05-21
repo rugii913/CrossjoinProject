@@ -23,7 +23,7 @@ public class ArticleRepositoryMemoryImpl implements ArticleRepository {
 	// 메서드 ----------------------------------------------------------
 	// -----------------------------------------------------------------
 	@Override
-	public int write(Article article) {
+	public int writeArticle(Article article) {
 		
 		articleList.add(article);
 		return article.getId();

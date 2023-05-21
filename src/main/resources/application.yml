@@ -21,3 +21,4 @@ spring:
     encoding: UTF-8
 mybatis:
   type-aliases-package: com.example.vo
+  mapper-locations: classpath:mappers/*.xml
