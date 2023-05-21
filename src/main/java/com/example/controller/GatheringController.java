@@ -2,17 +2,20 @@ package com.example.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.ui.Model;
 
 import com.example.dto.ArticleDto;
+import com.example.dto.ArticleDtoForWriteArticle;
 
 public interface GatheringController extends ArticleController{
 
 	@Override
-	String viewWriteArticleWindow();
+	String viewWriteArticleWindow(HttpServletRequest request, Model model);
 
 	@Override
-	String writeArticle(ArticleDto articleData, Model model);
+	String writeArticle(ArticleDtoForWriteArticle articleData, Model model);
 
 	@Override
 	List<ArticleDto> showArticleList(Integer boardId, Integer page);

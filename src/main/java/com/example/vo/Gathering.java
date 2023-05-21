@@ -1,7 +1,7 @@
 package com.example.vo;
 
-import com.example.dto.BoardGroup;
-import com.example.dto.BoardStatus;
+import com.example.enums.BoardGroup;
+import com.example.enums.BoardStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

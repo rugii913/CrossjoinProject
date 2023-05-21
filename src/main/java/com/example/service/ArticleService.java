@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.dto.ArticleDto;
+import com.example.dto.ArticleDtoForWriteArticle;
 import com.example.repository.ArticleRepository;
 import com.example.projectInnerUtil.VoDtoConvertUtil;
 import com.example.vo.Article;
@@ -24,9 +25,9 @@ public class ArticleService {
 	
 	// 메서드 ----------------------------------------------------------
 	// -----------------------------------------------------------------
-	public int writeArticle(ArticleDto articleData) {
+	public int writeArticle(ArticleDtoForWriteArticle articleData) {
 
-		return articleRepository.writeArticle(convertUtil.convertDtoToVo(articleData));
+		return articleRepository.writeArticle(convertUtil.convertArticleDtoForWriteArticle(articleData));
 	}
  
 	public ArticleDto showArticle(int id) {

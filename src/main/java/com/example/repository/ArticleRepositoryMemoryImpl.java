@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import com.example.dto.BoardGroup;
+import com.example.enums.BoardGroup;
 import com.example.projectInnerUtil.TimeUtil;
 import com.example.vo.Article;
 

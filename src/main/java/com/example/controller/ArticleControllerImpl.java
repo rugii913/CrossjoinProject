@@ -2,6 +2,8 @@ package com.example.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dto.ArticleDto;
+import com.example.dto.ArticleDtoForWriteArticle;
 import com.example.service.ArticleService;
+import com.example.vo.Member;
 
 @RequestMapping("/article/general")
 public class ArticleControllerImpl implements ArticleController{
@@ -29,7 +33,10 @@ public class ArticleControllerImpl implements ArticleController{
 	 */
 	@GetMapping("/write")
 	@Override
-	public String viewWriteArticleWindow() {
+	public String viewWriteArticleWindow(HttpServletRequest request, Model model) {
+		
+		Member loginedMember = (Member) request.getSession().getAttribute("loginedMember");
+		model.addAttribute("loginedMemberId", loginedMember.getId());
 		
 		return "/usr/article/general/write";
 	}
@@ -41,7 +48,7 @@ public class ArticleControllerImpl implements ArticleController{
 	 */
 	@PostMapping("/write")
 	@Override
-	public String writeArticle(ArticleDto articleData, Model model) {
+	public String writeArticle(ArticleDtoForWriteArticle articleData, Model model) {
 		
 		int id = articleService.writeArticle(articleData);
 		return showArticle(id, model);

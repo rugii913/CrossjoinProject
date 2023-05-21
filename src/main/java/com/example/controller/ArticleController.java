@@ -2,9 +2,12 @@ package com.example.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.ui.Model;
 
 import com.example.dto.ArticleDto;
+import com.example.dto.ArticleDtoForWriteArticle;
 
 public interface ArticleController {
 	
@@ -12,14 +15,14 @@ public interface ArticleController {
 	 * 일반 게시판 글쓰기 뷰 jsp로 연결하는 메서드
 	 * 반환값: String(jsp 경로)
 	 */
-	public String viewWriteArticleWindow();
+	public String viewWriteArticleWindow(HttpServletRequest request, Model model);
 	
 	/**
 	 * 일반 게시판 글 데이터 저장 메서드
 	 * 매개변수: ArticleDto 타입 게시물 데이터, Model 타입 스프링프레임워크 모델
 	 * 반환값: String(게시물 뷰 jsp 경로: showArticle 메서드 호출 -> 저장된 글 id와 모델을 매개변수로 넘김)
 	 */
-	public String writeArticle(ArticleDto articleData, Model model);
+	public String writeArticle(ArticleDtoForWriteArticle articleData, Model model);
 
 	/**
 	 * 글 목록 가져오는 메서드

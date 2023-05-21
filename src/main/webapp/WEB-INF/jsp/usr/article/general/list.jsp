@@ -8,13 +8,8 @@
 	<section class="mt-8">
 		<div class="container mx-auto px-3">
 			<div class="w-10/12 mx-auto">
-				<div class="flex justify-between">
-					<div>게시물 개수: -개</div>
-					<div class="mr-2"><a class="hover:underline" href="/article/general/write">글쓰기</a></div>
-				</div>
 				
 				<ul class="divide-y divide-amber-200">
-					
 					<c:forEach var="article" items="${articles }">
 						<li>
 							<div class="flex gap-x-11 my-2 justify-around text-base">
@@ -27,9 +22,11 @@
 							</div>
 						</li>
 					</c:forEach>
-					
 				</ul>
-				
+				<div class="h-px bg-amber-200"><!-- 목록 하단 구분선 --></div>
+				<div class="flex justify-end">
+					<div class="mr-2"><a class="hover:underline" href="/article/general/write">글쓰기</a></div>
+				</div>
 			</div>
 		</div>
 	</section>
