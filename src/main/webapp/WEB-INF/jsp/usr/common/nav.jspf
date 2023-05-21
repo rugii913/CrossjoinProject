@@ -73,7 +73,7 @@
 	</div>
 </nav>
 
-<%@ include file="../member/join.jspf"%>
+<%-- <%@ include file="../member/join.jspf"%> --%>
 <%@ include file="../member/login.jspf"%>
 
 <!-- 구분선  -->
@@ -111,7 +111,7 @@ function memberBtnInit() {
 
 function memberJoinBtnInit() {
 	
-	let form = document.getElementById('member-join-form');
+	const memberJoinForm = document.getElementById('member-join-form');
 	
 	const memberJoinBtn = document.querySelector('#member-join-btn');
 	
@@ -153,7 +153,7 @@ function memberJoinBtnInit() {
 
 function memberLoginBtnInit() {
 	
-	let form = document.getElementById('member-login-form');
+	const memberLoginForm = document.getElementById('member-login-form');
 	
 	const memberLoginBtn = document.querySelector('#member-login-btn');
 	

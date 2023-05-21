@@ -22,18 +22,12 @@
 
 <script>
 	// https://sisiblog.tistory.com/261 //https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-FormData-%EC%A0%95%EB%A6%AC-fetch-api
-	form.addEventListener('submit', (e)=> {
+	memberLoginForm.addEventListener('submit', (e)=> {
 		e.preventDefault();
 		
 		joinErrorHandle();
 		
-		const payload = new FormData(form);
-		
-		console.log(payload);
-		console.log(form);
-		/* payload.append('email', form.email.value);
-		payload.append('loginPw', form.loginPw.value);
-		payload.append('nickname', form.nickname.value); */
+		const payload = new FormData(memberLoginForm);
 		
 		fetch('/member/login', {
 	        method: 'POST',
@@ -53,13 +47,13 @@
 			return;
 		}
 
-		form.email.value = form.email.value.trim();
-		if (form.email.value == 0) {
+		memberLoginForm.email.value = memberLoginForm.email.value.trim();
+		if (memberLoginForm.email.value == 0) {
 			alert('이메일을 입력해주세요');
 			return;
 		}
-		form.loginPw.value = form.loginPw.value.trim();
-		if (form.loginPw.value == 0) {
+		memberLoginForm.loginPw.value = memberLoginForm.loginPw.value.trim();
+		if (memberLoginForm.loginPw.value == 0) {
 			alert('비밀번호를 입력해주세요');
 			return;
 		}

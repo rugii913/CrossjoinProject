@@ -30,17 +30,17 @@
 	let validLoginId = "";
 	let validEmail = "";
 
-	const form = document.getElementById('member-join-form'); // https://sisiblog.tistory.com/261 //https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-FormData-%EC%A0%95%EB%A6%AC-fetch-api
+	const memberJoinForm = document.getElementById('member-join-form'); // https://sisiblog.tistory.com/261 //https://inpa.tistory.com/entry/JS-%F0%9F%93%9A-FormData-%EC%A0%95%EB%A6%AC-fetch-api
 	
-	form.addEventListener('submit', (e)=> {
+	memberJoinForm.addEventListener('submit', (e)=> {
 		e.preventDefault();
 		
 		joinErrorHandle();
 		
-		const payload = new FormData(form);
+		const payload = new FormData(memberJoinForm);
 		
 		console.log(payload);
-		console.log(form);
+		console.log(memberJoinForm);
 		/* payload.append('email', form.email.value);
 		payload.append('loginPw', form.loginPw.value);
 		payload.append('nickname', form.nickname.value); */
@@ -63,28 +63,28 @@
 			return;
 		}
 
-		form.email.value = form.email.value.trim();
-		if (form.email.value == 0) {
+		memberJoinForm.email.value = memberJoinForm.email.value.trim();
+		if (memberJoinForm.email.value == 0) {
 			alert('이메일을 입력해주세요');
 			return;
 		}
-		form.loginPw.value = form.loginPw.value.trim();
-		if (form.loginPw.value == 0) {
+		memberJoinForm.loginPw.value = memberJoinForm.loginPw.value.trim();
+		if (memberJoinForm.loginPw.value == 0) {
 			alert('비밀번호를 입력해주세요');
 			return;
 		}
-		form.loginPwConfirm.value = form.loginPwConfirm.value.trim();
-		if (form.loginPwConfirm.value == 0) {
+		memberJoinForm.loginPwConfirm.value = memberJoinForm.loginPwConfirm.value.trim();
+		if (memberJoinForm.loginPwConfirm.value == 0) {
 			alert('비밀번호 확인을 입력해주세요');
 			return;
 		}
-		if (form.loginPwConfirm.value != form.loginPw.value) {
+		if (memberJoinForm.loginPwConfirm.value != memberJoinForm.loginPw.value) {
 			alert('비밀번호와 비밀번호 확인이 일치하지 않습니다');
-			form.loginPw.focus();
+			memberJoinForm.loginPw.focus();
 			return;
 		}
-		form.nickname.value = form.nickname.value.trim();
-		if (form.nickname.value == 0) {
+		memberJoinForm.nickname.value = memberJoinForm.nickname.value.trim();
+		if (memberJoinForm.nickname.value == 0) {
 			alert('닉네임을 입력해주세요');
 			return;
 		}
