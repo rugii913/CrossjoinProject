@@ -15,7 +15,11 @@ public interface ArticleRepository {
 
 	List<Article> getGeneralBoardsAllArticleList(Integer articleFrom, Integer articlesPerPage);
 	
+	int getCountOfGeneralBoardsAllArticle();
+	
 	List<Article> getGeneralBoardArticleList(Integer boardId, Integer articleFrom, Integer articlesPerPage);
+	
+	int getCountOfGeneralBoardArticle(Integer boardId);
 
 	void modifyArticle(Integer id, Article article);
 }

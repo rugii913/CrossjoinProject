@@ -30,7 +30,6 @@ public class VoDtoConvertUtil {
 	}
 	
 	public ArticleDto convertVoToDto(Article article) {
-		//TODO ArticleDTO memberNickname 가져와서 조립
 		ArticleDto articleData = new ArticleDto(article.getId(), article.getRegDate(), article.getUpdateDate(),
 				article.getBoardGroup(), article.getBoardId(), article.getMemberId(), article.getTitle(), article.getBody(),
 				memberRepository.getMemberNicknameById(article.getMemberId()) );

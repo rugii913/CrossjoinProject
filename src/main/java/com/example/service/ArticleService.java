@@ -38,10 +38,8 @@ public class ArticleService {
 		return convertUtil.convertVoToDto(article);
 	}
 
-	// 조정 필요 부분 시작
-	public List<ArticleDto> showGeneralBoardsAllArticleList(Integer page) {
+	public List<ArticleDto> showGeneralBoardsAllArticleList(Integer page, int articlesPerPage) {
 		
-		int articlesPerPage = 10;
 		int articleFrom = (page - 1) * articlesPerPage;
 		
 		List<ArticleDto> articleDataList = new ArrayList<>();
@@ -53,10 +51,13 @@ public class ArticleService {
 		
 		return articleDataList;
 	}
+	
+	public int getCountOfGeneralBoardsAllArticle() {
+		return articleRepository.getCountOfGeneralBoardsAllArticle();
+	}
 
-	public List<ArticleDto> showGeneralBoardArticleList(Integer boardId, Integer page) {
+	public List<ArticleDto> showGeneralBoardArticleList(Integer boardId, Integer page, int articlesPerPage) {
 
-		int articlesPerPage = 10;
 		int articleFrom = (page - 1) * articlesPerPage;
 		
 		List<ArticleDto> articleDataList = new ArrayList<>();
@@ -68,7 +69,10 @@ public class ArticleService {
 		
 		return articleDataList;
 	}
-	// 조정 필요 부분 끝	
+	
+	public int getCountOfGeneralBoardArticle(Integer boardId) {
+		return articleRepository.getCountOfGeneralBoardArticle(boardId);
+	}
 
 	public void modifyArticle(Integer id, ArticleDto articleData) {
 		// TODO Auto-generated method stub

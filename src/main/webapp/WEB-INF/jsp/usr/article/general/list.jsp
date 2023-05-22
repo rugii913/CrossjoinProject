@@ -23,18 +23,31 @@
 						</li>
 					</c:forEach>
 				</ul>
+				
 				<div class="h-px bg-amber-200"><!-- 목록 하단 구분선 --></div>
+				
+				<!-- 버튼 -->
 				<div class="flex justify-end">
 					<div class="mr-2"><a class="hover:underline" href="/article/general/write">글쓰기</a></div>
 				</div>
-			</div>
+				
+				<!-- 페이지 -->
+				<div class="flex justify-center gap-4">
+					<span>
+						<a href="?page=1"> &lt;&lt; </a>
+					</span>
+					<c:forEach begin="${startPage }" end="${endPage }" var="i">
+						<a ${param.page == i ? 'class="text-pink-700"':'' } href="?page=${i }">${i }</a>
+					</c:forEach>
+					<span>
+						<a href="?page=${pagesCount }"> &gt;&gt; </a>
+					</span>
+				</div>
+
+		</div>
 		</div>
 	</section>
 	
-<!-- 	<section>
-		<span>
-			<a href="?page=1"> &lt;&lt; </a>
-		</span>
-	</section> -->
+	
 	
 <%@ include file="../../common/footer.jspf"%>

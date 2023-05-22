@@ -29,12 +29,24 @@
 		LIMIT #{articleFrom}, #{articlesPerPage};
 	</select>
 	
+	<select id="getCountOfGeneralBoardsAllArticle" resultType="int">
+		SELECT COUNT(*)
+		FROM article
+		WHERE boardGroup = 'GENERAL';
+	</select>
+	
 	<select id="getGeneralBoardArticleList" resultType="Article">
 		SELECT *
 		FROM article
 		WHERE boardId = #{boardId} AND boardGroup = 'GENERAL'
 		ORDER BY id DESC
 		LIMIT #{articleFrom}, #{articlesPerPage};
+	</select>
+	
+	<select id="getCountOfGeneralBoardArticle" resultType="int">
+		SELECT COUNT(*)
+		FROM article
+		WHERE boardId = #{boardId} AND boardGroup = 'GENERAL';
 	</select>
 	
 </mapper>

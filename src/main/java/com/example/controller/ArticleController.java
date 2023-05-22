@@ -65,14 +65,32 @@ public class ArticleController {
 	public String viewArticleList(Model model, @RequestParam(defaultValue = "0") Integer boardId, @RequestParam(defaultValue = "1") Integer page) {
 		
 		List<ArticleDto> articles = null;
+		int articlesCount = 0;
+		int pagesCount = 0;
+		int articlesPerPage = 10;
 		
 		if (boardId == 0) {
-			articles = articleService.showGeneralBoardsAllArticleList(page);
+			articlesCount = articleService.getCountOfGeneralBoardsAllArticle();
+			pagesCount = (int) Math.ceil((articlesCount) / (double)articlesPerPage);
+			
+			articles = articleService.showGeneralBoardsAllArticleList(page, articlesPerPage);
+			
 		} else {
-			articles = articleService.showGeneralBoardArticleList(boardId, page);
+			articlesCount = articleService.getCountOfGeneralBoardArticle(boardId);
+			pagesCount = (int) Math.ceil((articlesCount) / (double)articlesPerPage);
+			
+			articles = articleService.showGeneralBoardArticleList(boardId, page, articlesPerPage);
+			
 		}
 		
+		int startPage = (page - 4 > 1) ? page - 4 : 1;
+		int endPage = (page + 4 < pagesCount) ? page + 4 : pagesCount;
+		
 		model.addAttribute("articles", articles);
+		model.addAttribute("page", page);
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
 		
 		return "/usr/article/general/list";
 	}
