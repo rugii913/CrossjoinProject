@@ -117,24 +117,6 @@ async function getLoginedMemberNicknameAndRender() {
 		loginedMemberNickname.innerText = data.data1 + '님';
 	}
 }
-/* function getLoginedMemberNicknameAndRender() {
-
-const loginedMemberNickname = document.querySelector('#logined-member-nickname');
-	
-fetch('/member/getLoginedMemberNickname', {
-    method: 'GET',
-    credentials: 'same-origin',
-}).then(res => res.json())
-.then(
-		data => {
-		if (data.data1 == null) {
-			loginedMemberNickname.innerText = '손님';
-		} else if (data.data1 != null){
-			loginedMemberNickname.innerText = data.data1 + '님';
-		}
-	}
-);
-} */
 
 function memberBtnInit() {
 	
@@ -166,22 +148,14 @@ function memberJoinBtnInit() {
 	modalBg.setAttribute('class', 'w-screen h-screen bg-black fixed z-40 top-0 left-0 opacity-60 modal-bg');
 	
 	let container = document.createElement('div');
-	//let memberJoinForm = document.createElement('div');//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
 	let memberJoinFormDiv = document.querySelector('#member-join-form-div'); //jspf 파일로 포함된 join.jspf의 member-join-form-div을 변수로 지정
 	let closeBtn = document.querySelector('.close-btn')
 	
 	container.setAttribute('class', 'flex justify-center modal-container');
-	//memberJoinForm.setAttribute('id', 'memberJoinForm');//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
-	//memberJoinFormDiv.setAttribute('class', 'h-[600px] w-[450px] top-[10%] mx-auto bg-white rounded-lg fixed z-50 flex flex-col');
 	
 	memberJoinBtn.addEventListener('click', ()=>{
 		document.body.appendChild(modalBg);
 		document.body.appendChild(container);
-		/*//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
-		//container.appendChild(memberJoinForm);
-		//importForm('memberJoinForm');
-		// memberJoinForm.innerHTML = loadForm('/resource/form/loginForm.html'); loadForm 앞에 await가 없으면 [object Promise]라는 메시지만 보임
-		// await는 async function에서 () 내에 바로 있어야 하므로 아예 다른 함수로 빼줘야함 */
 		container.appendChild(memberJoinFormDiv);
 		memberJoinFormDiv.setAttribute('class', 'h-[600px] w-[450px] top-[10%] mx-auto bg-white rounded-lg fixed z-50 flex flex-col');
 		

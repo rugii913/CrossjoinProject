@@ -21,10 +21,21 @@
 		WHERE id = #{id};
 	</select>
 	
-	<select id="getFreeboardsArticleList" resultType="Article">
+	<select id="getGeneralBoardsAllArticleList" resultType="Article">
 		SELECT *
 		FROM article
-		ORDER BY id DESC;
+		WHERE boardGroup = 'GENERAL'
+		ORDER BY id DESC
+		LIMIT #{articleFrom}, #{articlesPerPage};
+	</select>
+	
+	<select id="getGeneralBoardArticleList" resultType="Article">
+		SELECT *
+		FROM article
+		WHERE boardId = #{boardId}
+		AND boardGroup = 'GENERAL'
+		ORDER BY id DESC
+		LIMIT #{articleFrom}, #{articlesPerPage};
 	</select>
 	
 </mapper>

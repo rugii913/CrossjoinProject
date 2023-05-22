@@ -37,10 +37,13 @@ public class ArticleService {
 	}
 
 	// 조정 필요 부분 시작
-	public List<ArticleDto> showFreeboardsArticleList(Integer page) {
+	public List<ArticleDto> showGeneralBoardsAllArticleList(Integer page) {
+		
+		int articlesPerPage = 10;
+		int articleFrom = (page - 1) * articlesPerPage;
 		
 		List<ArticleDto> articleDataList = new ArrayList<>();
-		List<Article> articleList = articleRepository.getFreeboardsArticleList(page);
+		List<Article> articleList = articleRepository.getGeneralBoardsAllArticleList(articleFrom, articlesPerPage);
 		
 		for (Article article : articleList) {
 			articleDataList.add(convertUtil.convertVoToDto(article)); 
@@ -49,9 +52,19 @@ public class ArticleService {
 		return articleDataList;
 	}
 
-	public List<ArticleDto> showArticleList(Integer boardId, Integer page) {
-		// TODO 
-		return null;
+	public List<ArticleDto> showGeneralBoardArticleList(Integer boardId, Integer page) {
+
+		int articlesPerPage = 10;
+		int articleFrom = (page - 1) * articlesPerPage;
+		
+		List<ArticleDto> articleDataList = new ArrayList<>();
+		List<Article> articleList = articleRepository.getGeneralBoardArticleList(boardId, articleFrom, articlesPerPage);
+		
+		for (Article article : articleList) {
+			articleDataList.add(convertUtil.convertVoToDto(article)); 
+		}
+		
+		return articleDataList;
 	}
 	// 조정 필요 부분 끝	
 

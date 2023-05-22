@@ -36,6 +36,7 @@ public class ArticleControllerImpl implements ArticleController{
 	public String viewWriteArticleWindow(HttpServletRequest request, Model model) {
 		
 		Member loginedMember = (Member) request.getSession().getAttribute("loginedMember");
+		
 		model.addAttribute("loginedMemberId", loginedMember.getId());
 		
 		return "/usr/article/general/write";
@@ -82,10 +83,10 @@ public class ArticleControllerImpl implements ArticleController{
 	public List<ArticleDto> showArticleList(Integer boardId, Integer page) {
 		
 		if (boardId == 0) {
-			return articleService.showFreeboardsArticleList(page);
+			return articleService.showGeneralBoardsAllArticleList(page);
 		}
 		
-		return articleService.showArticleList(boardId, page);
+		return articleService.showGeneralBoardArticleList(boardId, page);
 	}
 	//url 매핑 없으나, ArticleController 인터페이스 유지하기 위해 남겨놓는 부분 끝 - viewArticleList 관련
 

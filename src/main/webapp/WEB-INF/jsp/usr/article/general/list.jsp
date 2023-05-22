@@ -31,4 +31,10 @@
 		</div>
 	</section>
 	
+<!-- 	<section>
+		<span>
+			<a href="?page=1"> &lt;&lt; </a>
+		</span>
+	</section> -->
+	
 <%@ include file="../../common/footer.jspf"%>

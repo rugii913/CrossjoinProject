@@ -102,27 +102,25 @@ public class MemberController {
 	
 	@PostMapping("/join")
 	@ResponseBody
-	public String doJoin(String email, String loginPw, String nickname, HttpServletResponse response) {
+	public Result<String> doJoin(String email, String loginPw, String nickname, HttpServletResponse response) {
 		
 		if (memberRepository.getMemberByEmail(email) != null) {
-			return UtilURL.historyBack("이미 사용 중인 메일 주소입니다.");
+			return new Result<String>(nickname, "JoinedMemberNickname", ms.getMessage("member.join.fail.emailDuplicated", null, null));
 		}
 		
 		System.out.println(email);
 		System.out.println(loginPw);
 		if (loginPw == null || loginPw.equals("")) {
-			return UtilURL.historyBack("비밀번호를 입력해주세요.");
+			return new Result<String>(nickname, "JoinedMemberNickname", ms.getMessage("member.join.fail.loginPwNotInserted", null, null));
 		} else if (loginPw.trim().length() < 5) {
-			return UtilURL.historyBack("비밀번호는 5글자 이상이어야 합니다.");
+			return new Result<String>(nickname, "JoinedMemberNickname", ms.getMessage("member.join.fail.loginPwBelowFive", null, null));
 		} else if (loginPw.contains(" ")) {
-			return UtilURL.historyBack("비밀번호에는 공백이 포함될 수 없습니다.");
+			return new Result<String>(nickname, "JoinedMemberNickname", ms.getMessage("member.join.fail.loginPwContainsSpacing", null, null));
 		}
 		
 		memberRepository.join(email, loginPw, nickname);
 		
-		//return "redirect:/login";
-		//return UtilURL.replace("회원가입 성공", "/login");
-		return "회원가입 성공";
+		return new Result<String>(nickname, "JoinedMemberNickname", ms.getMessage("member.join.success", null, null));
 	}
 	
 	@GetMapping("/checkDupEmail")
