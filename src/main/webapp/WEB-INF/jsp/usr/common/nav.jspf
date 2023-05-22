@@ -56,7 +56,6 @@
 	</div>
 	<div class="col-start-11 justify-self-end">
 		<div class="h-[40px] w-[40px] break-keep relative">
-			<!-- <img id="member-btn" src="/resource/person.png" alt="회원 기능 버튼" class="object-contain h-full absolute z-20 cursor-pointer hover:drop-shadow-lg"> -->
 			<button id="member-btn" class="absolute z-20">
 				<img src="/resource/person.png" alt="회원 기능 버튼" class="object-contain h-full z-20 cursor-pointer hover:drop-shadow-lg">
 			</button>
@@ -67,6 +66,9 @@
 				</div>
 				<div>
 					<button id="member-login-btn">로그인</button>
+				</div>
+				<div>
+					<button id="member-logout-btn">로그아웃</button>
 				</div>
 			</div>
 		</div>
@@ -88,19 +90,51 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	memberBtnInit();
 	memberJoinBtnInit();
 	memberLoginBtnInit();
+	memberLogoutBtnInit()
 	
 })
 
-function getLoginedMemberNicknameAndRender() {
+async function getLoginedMemberNickname() { //return 받으려면 async function으로 만든 후 await해서 받아와야함 //https://jsdev.kr/t/fetch-return/5137
 	
 	const loginedMemberNickname = document.querySelector('#logined-member-nickname');
 		
-	fetch('/member/getLoginedMemberNickname', {
+	const response = await fetch('/member/getLoginedMemberNickname', {
         method: 'GET',
         credentials: 'same-origin',
-	}).then(res => res.text()).then(data => (loginedMemberNickname.innerText = data + '님'));
+	});
 	
+	return await response.json();
 }
+
+async function getLoginedMemberNicknameAndRender() {
+	
+	const loginedMemberNickname = document.querySelector('#logined-member-nickname');
+	const data = await getLoginedMemberNickname();
+	
+	if (data.data1 == null) {
+		loginedMemberNickname.innerText = '손님';
+	} else if (data.data1 != null){
+		loginedMemberNickname.innerText = data.data1 + '님';
+	}
+}
+/* function getLoginedMemberNicknameAndRender() {
+
+const loginedMemberNickname = document.querySelector('#logined-member-nickname');
+	
+fetch('/member/getLoginedMemberNickname', {
+    method: 'GET',
+    credentials: 'same-origin',
+}).then(res => res.json())
+.then(
+		data => {
+		if (data.data1 == null) {
+			loginedMemberNickname.innerText = '손님';
+		} else if (data.data1 != null){
+			loginedMemberNickname.innerText = data.data1 + '님';
+		}
+	}
+);
+} */
 
 function memberBtnInit() {
 	
@@ -109,7 +143,7 @@ function memberBtnInit() {
 	
 	memberBtn.addEventListener('click', ()=>{
 		if (memberMenu.getAttribute('class').includes('hidden')) {
-			memberMenu.setAttribute('class', 'w-[200px] bg-white rounded absolute z-10 right-0 top-0 -translate-y-[10px] translate-x-[10px] py-4 px-6');	
+			memberMenu.setAttribute('class', 'w-[250px] bg-white rounded absolute z-10 right-0 top-0 -translate-y-[10px] translate-x-[10px] py-4 px-6');	
 		} else {
 			memberMenu.setAttribute('class', 'hidden');
 		}
@@ -129,14 +163,14 @@ function memberJoinBtnInit() {
 	const memberJoinBtn = document.querySelector('#member-join-btn');
 	
 	let modalBg = document.createElement('div');
-	modalBg.setAttribute('class', 'w-screen h-screen bg-black fixed z-40 top-0 left-0 opacity-60');
+	modalBg.setAttribute('class', 'w-screen h-screen bg-black fixed z-40 top-0 left-0 opacity-60 modal-bg');
 	
 	let container = document.createElement('div');
 	//let memberJoinForm = document.createElement('div');//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
 	let memberJoinFormDiv = document.querySelector('#member-join-form-div'); //jspf 파일로 포함된 join.jspf의 member-join-form-div을 변수로 지정
 	let closeBtn = document.querySelector('.close-btn')
 	
-	container.setAttribute('class', 'flex justify-center');
+	container.setAttribute('class', 'flex justify-center modal-container');
 	//memberJoinForm.setAttribute('id', 'memberJoinForm');//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
 	//memberJoinFormDiv.setAttribute('class', 'h-[600px] w-[450px] top-[10%] mx-auto bg-white rounded-lg fixed z-50 flex flex-col');
 	
@@ -171,13 +205,13 @@ function memberLoginBtnInit() {
 	const memberLoginBtn = document.querySelector('#member-login-btn');
 	
 	let modalBg = document.createElement('div');
-	modalBg.setAttribute('class', 'w-screen h-screen bg-black fixed z-40 top-0 left-0 opacity-60');
+	modalBg.setAttribute('class', 'w-screen h-screen bg-black fixed z-40 top-0 left-0 opacity-60 modal-bg');
 	
 	let container = document.createElement('div');
 	let memberLoginFormDiv = document.querySelector('#member-login-form-div'); //jspf 파일로 포함된 join.jspf의 member-join-form-div을 변수로 지정
 	let closeBtn = document.querySelector('.close-btn')
 	
-	container.setAttribute('class', 'flex justify-center');
+	container.setAttribute('class', 'flex justify-center modal-container');
 	
 	memberLoginBtn.addEventListener('click', ()=>{
 		document.body.appendChild(modalBg);
@@ -198,18 +232,17 @@ function memberLoginBtnInit() {
 	})
 }
 
-/*//html 불러오는 대신 jspf 파일 포함시키면서 주석처리
-	async function loadForm(url) {
-	//const response = await fetch(url, {
-	//method: 'GET'
-	//});
-	//return response.text();
-	//await 한 번 더 필요
+function memberLogoutBtnInit() {
 	
-	return await (await fetch(url)).text();
+	const memberLogoutBtn = document.querySelector('#member-logout-btn');
+	
+	memberLogoutBtn.addEventListener('click', ()=> {
+		
+		fetch('/member/logout', {
+	        method: 'GET',
+	        credentials: 'same-origin',
+		}).then(alert('로그아웃 성공!')).then(getLoginedMemberNicknameAndRender());
+	});
 }
 
-async function importForm(target) {
-	document.querySelector('#' + target).innerHTML = await loadForm('/resource/form/' + target + '.html');
-} */
 </script>

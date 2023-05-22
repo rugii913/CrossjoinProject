@@ -43,6 +43,9 @@
 			alert(data['msg']);
 		} else {
 			alert(data['data1'] + '님 환영합니다.');
+			document.body.removeChild(document.body.querySelector('.modal-bg'));
+			document.body.removeChild(document.body.querySelector('.modal-container'));
+			getLoginedMemberNicknameAndRender();
 		}
 		});
 		

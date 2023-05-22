@@ -48,17 +48,18 @@ public class MemberController {
 
 	@GetMapping("/getLoginedMemberNickname")
 	@ResponseBody
-	public String getLoginedMemberNickname(HttpServletRequest request) {
+	public Result<String> getLoginedMemberNickname(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession(false);
 		
 		if (session == null || session.getAttribute("loginedMember") == null) {
-			return "손";
+			return new Result<String>(null, "loginedMemberNickname", "로그인 중이 아닙니다");
 		}
 		
 		Member loginedMember = (Member)session.getAttribute("loginedMember");
 		
-		return loginedMember.getNickname();
+		return new Result<String>(loginedMember.getNickname(), "loginedMemberNickname", "성공");
+				
 	}
 
 	@GetMapping("/login")
