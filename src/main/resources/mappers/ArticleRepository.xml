@@ -32,8 +32,7 @@
 	<select id="getGeneralBoardArticleList" resultType="Article">
 		SELECT *
 		FROM article
-		WHERE boardId = #{boardId}
-		AND boardGroup = 'GENERAL'
+		WHERE boardId = #{boardId} AND boardGroup = 'GENERAL'
 		ORDER BY id DESC
 		LIMIT #{articleFrom}, #{articlesPerPage};
 	</select>

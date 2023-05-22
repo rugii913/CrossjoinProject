@@ -48,6 +48,8 @@ public class ArticleService {
 		for (Article article : articleList) {
 			articleDataList.add(convertUtil.convertVoToDto(article)); 
 		}
+		System.out.println(articleList);
+		System.out.println(articleDataList);
 		
 		return articleDataList;
 	}

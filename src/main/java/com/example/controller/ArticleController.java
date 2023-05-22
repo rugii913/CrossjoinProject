@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import com.example.dto.ArticleDtoForWriteArticle;
 import com.example.service.ArticleService;
 import com.example.vo.Member;
 
+@Controller
 @RequestMapping("/article/general")
 public class ArticleController {
 	
@@ -59,16 +61,16 @@ public class ArticleController {
 	 * 매개변수: Model 스프링프레임워크 모델, Integer 게시판 아이디(디폴트 값 0), Integer 게시판 페이지 값 
 	 * 반환값: String(jsp 경로)
 	 */
-	@GetMapping // http://localhost:8081/article?boardId=0
+	@GetMapping //default - http://localhost:8081/article/general?boardId=0&page=1
 	public String viewArticleList(Model model, @RequestParam(defaultValue = "0") Integer boardId, @RequestParam(defaultValue = "1") Integer page) {
 		
-		List<ArticleDto> articles;
+		List<ArticleDto> articles = null;
 		
 		if (boardId == 0) {
 			articles = articleService.showGeneralBoardsAllArticleList(page);
+		} else {
+			articles = articleService.showGeneralBoardArticleList(boardId, page);
 		}
-		
-		articles = articleService.showGeneralBoardArticleList(boardId, page);
 		
 		model.addAttribute("articles", articles);
 		
