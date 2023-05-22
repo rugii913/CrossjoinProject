@@ -10,9 +10,13 @@ public interface MemberRepository {
 	public void join(String email, String loginPw, String nickname);
 	
 	public Member getMemberById(int id);
+	
+	public Member getMemberByEmail(String email);
+	
+	public String getMemberNicknameById(int id);
 
 	public int getLastInsertId();
 	
-	public Member getMemberByEmail(String email);
+	
 
 }

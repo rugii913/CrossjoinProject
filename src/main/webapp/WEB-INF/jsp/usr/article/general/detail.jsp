@@ -14,7 +14,7 @@
 				<div class="flex my-2 justify-around text-sm">
 					<div>글번호: ${articleData.id }</div>
 					<div>${articleData.regDate.substring(0,16) }</div>
-					<div>${articleData.memberId }</div>
+					<div>${articleData.memberNickname }</div>
 				</div>
 				
 				<div class="h-px bg-amber-200"></div>

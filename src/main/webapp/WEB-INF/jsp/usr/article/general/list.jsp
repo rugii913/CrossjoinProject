@@ -10,15 +10,15 @@
 			<div class="w-10/12 mx-auto">
 				
 				<ul class="divide-y divide-amber-200">
-					<c:forEach var="article" items="${articles }">
+					<c:forEach var="articleData" items="${articles }">
 						<li>
 							<div class="flex gap-x-11 my-2 justify-around text-base">
-								<div>${article.id}</div>
-								<div>${article.memberId}</div>
-								<div>${article.regDate.substring(0,16)}</div>
+								<div>${articleData.id}</div>
+								<div>${articleData.memberNickname}</div>
+								<div>${articleData.regDate.substring(0,16)}</div>
 							</div>
 							<div class="font-semibold my-2">
-								<a class="hover:underline" href="/article/general/${article.id }">${article.title}</a>
+								<a class="hover:underline" href="/article/general/${articleData.id }">${articleData.title}</a>
 							</div>
 						</li>
 					</c:forEach>

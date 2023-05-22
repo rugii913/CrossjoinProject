@@ -19,13 +19,5 @@ public class ArticleDto {
 	private String body;	
 	//
 	private String memberNickname;
-	
-	public ArticleDto(BoardGroup boardGroup, int boardId, int memberId, String title, String body) {
-		this.boardGroup = boardGroup;
-		this.boardId = boardId;
-		this.memberId = memberId;
-		this.title = title;
-		this.body = body;
-	}
 
 }

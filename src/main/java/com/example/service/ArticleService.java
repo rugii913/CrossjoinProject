@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.dto.ArticleDto;
 import com.example.dto.ArticleDtoForWriteArticle;
 import com.example.repository.ArticleRepository;
+import com.example.repository.MemberRepository;
 import com.example.projectInnerUtil.VoDtoConvertUtil;
 import com.example.vo.Article;
 
@@ -15,12 +16,13 @@ import com.example.vo.Article;
 public class ArticleService {
 	
 	ArticleRepository articleRepository;
+	MemberRepository memberRepository;
 	VoDtoConvertUtil convertUtil;
 	
-	public ArticleService(ArticleRepository articleRepository) {
+	public ArticleService(ArticleRepository articleRepository, MemberRepository memberRepository) {
 		
 		this.articleRepository = articleRepository;
-		this.convertUtil = new VoDtoConvertUtil();
+		this.convertUtil = new VoDtoConvertUtil(memberRepository);
 	}
 	
 	// 메서드 ----------------------------------------------------------
@@ -48,8 +50,6 @@ public class ArticleService {
 		for (Article article : articleList) {
 			articleDataList.add(convertUtil.convertVoToDto(article)); 
 		}
-		System.out.println(articleList);
-		System.out.println(articleDataList);
 		
 		return articleDataList;
 	}

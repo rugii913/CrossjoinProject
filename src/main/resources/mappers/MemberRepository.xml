@@ -18,12 +18,18 @@
 		SELECT * FROM `member` WHERE id = #{id}
 	</select>
 	
+	<select id="getMemberByEmail" resultType="Member">
+		SELECT * FROM `member` WHERE email = #{email}
+	</select>
+	
+	<select id="getMemberNicknameById" resultType="String">
+		SELECT nickname FROM `member` WHERE id = #{id}
+	</select>
+	
 	<select id="getLastInsertId" resultType="int">
 		SELECT LAST_INSERT_ID() 
 	</select>
 	
-	<select id="getMemberByEmail" resultType="Member">
-		SELECT * FROM `member` WHERE email = #{email}
-	</select>
+
 
 </mapper>
