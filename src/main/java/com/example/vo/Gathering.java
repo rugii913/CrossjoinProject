@@ -1,7 +1,6 @@
 package com.example.vo;
 
-import com.example.enums.BoardGroup;
-import com.example.enums.BoardStatus;
+import com.example.enums.GatheringStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +13,7 @@ public class Gathering extends Board{
 	private String regDate;
 	private String startDate;
 	private String endDate;
-	private BoardStatus boardStatus;
-	private BoardGroup boardGroup;
+	private GatheringStatus gatheringStatus;
+	private int boardId;
 	private String title;
 }

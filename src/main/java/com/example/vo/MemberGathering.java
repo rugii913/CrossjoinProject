@@ -8,7 +8,7 @@ import lombok.Getter;
 public class MemberGathering {
 	
 	private int memberId;
-	private int atheringId;
+	private int gatheringId;
 	private boolean host;
 
 }

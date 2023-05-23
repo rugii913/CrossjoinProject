@@ -37,7 +37,7 @@
 						<a href="?page=1"> &lt;&lt; </a>
 					</span>
 					<c:forEach begin="${startPage }" end="${endPage }" var="i">
-						<a ${param.page == i ? 'class="text-pink-700"':'' } href="?page=${i }">${i }</a>
+						<a ${page == i ? 'class="text-pink-700"':'' } href="?page=${i }">${i }</a>
 					</c:forEach>
 					<span>
 						<a href="?page=${pagesCount }"> &gt;&gt; </a>

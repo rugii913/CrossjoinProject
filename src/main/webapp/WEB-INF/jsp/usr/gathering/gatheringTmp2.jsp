@@ -18,44 +18,17 @@
 	</div>
 </article> -->
 
-<section id="gathering-main" class="w-1/2 mx-auto grid grid-cols-2 gap-6">
-	<article class="gathering">
-		<div class="w-full">
-			<img src="/resource/gatheringImg/gathering1.png" alt=""  class="object-contain" />
-		</div>
-		<div>
-			<div>진행 중</div>
-			<div>모임 １</div>
-			<div>어쩌구 독서 모임</div>
-			<div>2023-01-01 ~ 2023-12-31</div>
-			<a href="/gathering/1">참여하기</a>
-		</div>
-	</article>
-	<article class="gathering">
-		<div class="w-full">
-			<img src="/resource/gatheringImg/gathering2.png" alt=""  class="object-contain" />
-		</div>
-		<div>
-			<div>진행 중</div>
-			<div>모임 2</div>
-			<div>어쩌구저쩌구 영어 독서</div>
-			<div>2023-01-01 ~ 2023-12-31</div>
-			<a href="/gathering/2">참여하기</a>
-		</div>
-	</article>
-	<article class="gathering">
-		<div class="w-full">
-			<img src="/resource/gatheringImg/gathering3.png" alt=""  class="object-contain" />
-		</div>
-		<div>
-			<div>진행 중</div>
-			<div>모임 3</div>
-			<div>어쨌든 독서</div>
-			<div>2023-01-01 ~ 2023-12-31</div>
-			<a href="/gathering/3">참여하기</a>
-		</div>
-	</article>
-</section>
+<article class="gathering">
+	<div class="w-full">
+		<img src="/resource/gatheringImg/gathering2.png" alt=""  class="object-contain" />
+	</div>
+	<div>
+		<div>진행 중</div>
+		<div>모임 2</div>
+		<div>어쩌구저쩌구 영어 독서</div>
+		<div>2023-01-01 ~ 2023-12-31</div>
+	</div>
+</article>
 
 <script type="text/javascript">
 	let gatherings = document.body.querySelectorAll('.gathering');
