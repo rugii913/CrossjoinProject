@@ -28,8 +28,11 @@ public class ArticleService {
 	// 메서드 ----------------------------------------------------------
 	// -----------------------------------------------------------------
 	public int writeArticle(ArticleDtoForWriteArticle articleData) {
-
-		return articleRepository.writeArticle(convertUtil.convertArticleDtoForWriteArticle(articleData));
+		
+		Article article = convertUtil.convertArticleDtoForWriteArticle(articleData);
+		articleRepository.writeArticle(article);
+		
+		return article.getId();
 	}
  
 	public ArticleDto showArticle(int id) {

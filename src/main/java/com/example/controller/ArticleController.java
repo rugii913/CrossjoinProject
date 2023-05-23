@@ -52,6 +52,7 @@ public class ArticleController {
 	public String writeArticle(ArticleDtoForWriteArticle articleData, Model model) {
 		
 		int id = articleService.writeArticle(articleData);
+		System.out.println(id);
 		return showArticle(id, model);
 	}
 	

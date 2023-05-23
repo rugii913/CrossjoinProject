@@ -6,13 +6,16 @@
 	
 	<insert id="writeArticle">
 		INSERT INTO article
-		SET regDate = NOW(),
+		SET regDate = NOW(),	
 		updateDate = NOW(),
 		memberId = #{memberId},
 		boardGroup = #{boardGroup},
 		boardId = #{boardId},
 		title =#{title},
-		`body`= #{body};
+		`body`= #{body}
+		<selectKey keyProperty="id" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
 	</insert>
 	
 	<select id="getArticle" resultType="Article">
