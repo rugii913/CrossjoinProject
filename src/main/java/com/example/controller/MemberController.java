@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.dto.MemberDtoForSession;
 import com.example.projectInnerUtil.UtilURL;
 import com.example.repository.MemberRepository;
+import com.example.service.MemberService;
 import com.example.vo.Member;
 import com.example.vo.Result;
 
@@ -22,12 +24,14 @@ import com.example.vo.Result;
 @RequestMapping("/member")
 public class MemberController {
 	
+	MemberService memberService;
 	MemberRepository memberRepository;
 	@Autowired
 	MessageSource ms;
 	
-	public MemberController(MemberRepository memberRepository) {
+	public MemberController(MemberService memberService, MemberRepository memberRepository) {
 
+		this.memberService = memberService;
 		this.memberRepository = memberRepository;
 	}
 	
@@ -71,7 +75,8 @@ public class MemberController {
 	@ResponseBody
 	public /*String*/ Result<String> login(@RequestParam String email, @RequestParam String loginPw, HttpServletRequest request) {
 		
-		Member foundMember = memberRepository.getMemberByEmail(email);
+		MemberDtoForSession foundMember = memberService.getMemberDataByEmail(email);
+		
 		if (foundMember == null) {
 			/* return UtilURL.historyBack("일치하는 회원 정보가 존재하지 않습니다."); */
 			return new Result<String>("", "LoginedMemberNickname", ms.getMessage("member.login.fail.emailNotExists", null, null));
@@ -83,7 +88,8 @@ public class MemberController {
 		}
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("loginedMember", foundMember);
+		session.setAttribute("loginedMemberId", foundMember);
+		session.setAttribute("logined", true);
 		/* return UtilURL.replace("로그인 성공!", "/main"); */
 		return new Result<String>(foundMember.getNickname(), "LoginedMemberNickname", ms.getMessage("member.login.success", null, null));
 	}
