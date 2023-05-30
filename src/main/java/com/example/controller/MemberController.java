@@ -13,15 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.dto.MemberDtoForSession;
+import com.example.dto.MemberDtoForLogin;
+import com.example.dto.Result;
 import com.example.projectInnerUtil.UtilURL;
 import com.example.repository.MemberRepository;
 import com.example.service.MemberService;
-import com.example.vo.Member;
-import com.example.vo.Result;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/member")
+@Slf4j
 public class MemberController {
 	
 	MemberService memberService;
@@ -60,7 +62,8 @@ public class MemberController {
 			return new Result<String>(null, "loginedMemberNickname", "로그인 중이 아닙니다");
 		}
 		
-		Member loginedMember = (Member)session.getAttribute("loginedMember");
+		MemberDtoForLogin loginedMember = (MemberDtoForLogin)session.getAttribute("loginedMember");
+		log.info("loginedMember = {}", loginedMember);
 		
 		return new Result<String>(loginedMember.getNickname(), "loginedMemberNickname", "성공");
 				
@@ -73,25 +76,20 @@ public class MemberController {
 	
 	@PostMapping("/login")
 	@ResponseBody
-	public /*String*/ Result<String> login(@RequestParam String email, @RequestParam String loginPw, HttpServletRequest request) {
+	public Result<MemberDtoForLogin> login(@RequestParam String email, @RequestParam String loginPw, HttpServletRequest request) {
 		
-		MemberDtoForSession foundMember = memberService.getMemberDataByEmail(email);
+		Result<MemberDtoForLogin> result = memberService.getMemberDataByEmail(email, loginPw);
 		
-		if (foundMember == null) {
-			/* return UtilURL.historyBack("일치하는 회원 정보가 존재하지 않습니다."); */
-			return new Result<String>("", "LoginedMemberNickname", ms.getMessage("member.login.fail.emailNotExists", null, null));
-		}
-		
-		if (!foundMember.getLoginPw().equals(loginPw) ) {
-			/* return UtilURL.historyBack("비밀번호가 일치하지 않습니다."); */
-			return new Result<String>("", "LoginedMemberNickname", ms.getMessage("member.login.fail.loginPwMismatch", null, null));
+		if (result.getData1() == null) {
+			return result;
 		}
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("loginedMemberId", foundMember);
+		session.setAttribute("loginedMember", result.getData1());
 		session.setAttribute("logined", true);
+		
 		/* return UtilURL.replace("로그인 성공!", "/main"); */
-		return new Result<String>(foundMember.getNickname(), "LoginedMemberNickname", ms.getMessage("member.login.success", null, null));
+		return result;
 	}
 	
 	@GetMapping("/logout")

@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class MemberDtoForSession {
+public class MemberDtoForLogin {
 	
 	private int id;
 	private String email;
@@ -16,7 +16,7 @@ public class MemberDtoForSession {
 	private String delDate;
 	
 	@Builder
-	public MemberDtoForSession(int id, String email, int authLevel, String nickname, boolean delStatus, String delDate) {
+	public MemberDtoForLogin(int id, String email, int authLevel, String nickname, boolean delStatus, String delDate) {
 		this.id = id;
 		this.email = email;
 		this.authLevel = authLevel;

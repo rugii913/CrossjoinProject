@@ -2,7 +2,7 @@ package com.example.projectInnerUtil;
 
 import com.example.dto.ArticleDto;
 import com.example.dto.ArticleDtoForWriteArticle;
-import com.example.dto.MemberDtoForSession;
+import com.example.dto.MemberDtoForLogin;
 import com.example.repository.MemberRepository;
 import com.example.vo.Article;
 
